@@ -3,15 +3,15 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="border-2 flex flex-col sm:flex-row justify-between items-center">
+    <div className="flex flex-col sm:flex-row justify-center items-center flex-wrap p-4 py-10">
       <Hero />
-      <div className="w-50 h-auto sm:w-100">
+      <div className="w-full sm:w-[400px] ml-auto md:ml-0">
         <Image
           src="/img/new-listing-image.png"
           alt="MoFlo logo"
-          width={200}
-          height={70}
-          className="w-full h-auto"
+          width={500}
+          height={400}
+          className="w-[500px] h-auto"
         />
       </div>
     </div>

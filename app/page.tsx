@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Hero from "./(landing)/Hero";
 import HowItWorks from "./(landing)/HowItWorks";
+import GetStarted from "./(landing)/GetStarted";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
         </div>
       </div>
       <HowItWorks />
+      <GetStarted />
     </>
   );
 }

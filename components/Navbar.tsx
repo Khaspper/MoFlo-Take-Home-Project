@@ -19,7 +19,7 @@ export default function Navbar() {
         <Link href={"/create"}>
           <IoCreate className="text-4xl text-blue-700" />
         </Link>
-        <Link href={"/view"}>
+        <Link href={"/view-listings"}>
           <FiActivity className="text-4xl text-blue-700" />
         </Link>
         <Link href={"/"}>

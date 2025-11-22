@@ -1,5 +1,5 @@
 import Image from "next/image";
-import CreateListingButton from "@/components/CreateListingButton";
+import ArrowButton from "@/components/ArrowButton";
 
 export default function Hero() {
   return (
@@ -14,7 +14,7 @@ export default function Hero() {
         publication on any real estate platform.
       </p>
       <div className="px-4 pb-20 pt-7 md:pb-0">
-        <CreateListingButton />
+        <ArrowButton text={"Create a listing"} link={"create"} />
       </div>
     </div>
   );

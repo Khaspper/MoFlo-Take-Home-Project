@@ -2,7 +2,7 @@ export default function HowItWorks() {
   return (
     <div className="flex flex-col items-center gap-4">
       <h1 className="text-4xl text-[#464646]">How it works</h1>
-      <div className="bg-[#F9FAFB] py-6 px-8 rounded-lg max-w-[800px] flex flex-col gap-8">
+      <div className="bg-[#F9FAFB] py-6 px-8 rounded-xl max-w-[800px] flex flex-col gap-8">
         <section>
           <h1 className="text-3xl">
             <span className="text-[#464646]">1.</span> Enter Property Details

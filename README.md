@@ -15,3 +15,7 @@ an app for real estate agents to quickly generate property listings descriptions
 I did some house searching and I found out that the inputs agents need to fill out are
 
 Just practiced retrieving the listings from supabase... and I realized I needed photos as well and now I don't know how to do that
+
+Sat Nov 22nd 2025 3:16 PM
+
+Forgot to journal this part but I finished setting up Supabase kinda nervous about it I also copied the style from MoLetters for the UI design and then I found a MoFlo Youtube video so I will copy that for the `/create` page... I'm most nervous for the `/create`

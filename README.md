@@ -19,3 +19,5 @@ Just practiced retrieving the listings from supabase... and I realized I needed 
 Sat Nov 22nd 2025 3:16 PM
 
 Forgot to journal this part but I finished setting up Supabase kinda nervous also I created the front end first since for me it's hard to start on the back end if I can't see it? Idk how to explain it but I used figma to design the landing page first so it's easier to edit yada yada yada... I also copied the style from MoLetters for the UI design and then I found a MoFlo Youtube video so I will copy that for the `/create` page... I'm most nervous for the `/create`
+
+Sun Nov 23 2:43 AM Im working on the viewing stage... so like editing viewing the post seeing the information about the post... created Date... if it's posted or draft or what not... platforms as well... But I couldn't find the platform icons except for Zillow... Redfin or MLS don't have an Icon

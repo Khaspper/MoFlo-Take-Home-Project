@@ -1,13 +1,13 @@
 import Image from "next/image";
-import { FiEdit3 } from "react-icons/fi";
 
-type GridCardProps = {
+type TGridCardProps = {
   image_url: string;
   created_at: string;
   status: string;
   beds: number;
   baths: number;
   address: string;
+  children: React.ReactNode;
 };
 
 export default function GridCard({
@@ -17,7 +17,8 @@ export default function GridCard({
   beds,
   baths,
   address,
-}: GridCardProps) {
+  children,
+}: TGridCardProps) {
   const date = new Date(created_at).toLocaleDateString("en-US", {
     month: "short",
     day: "numeric",
@@ -44,10 +45,7 @@ export default function GridCard({
 
       <div className="flex flex-col justify-between p-4 relative flex-1">
         <div className="absolute top-3 right-3 flex gap-3 text-gray-700">
-          <FiEdit3
-            className="cursor-pointer text-blue-600 transition-transform duration-200 hover:scale-110"
-            size={18}
-          />
+          {children}
         </div>
 
         <div className="space-y-1 pr-8">

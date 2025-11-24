@@ -7,6 +7,7 @@ type TProps = {
   setSort: React.Dispatch<React.SetStateAction<string>>;
   view: string;
   setView: React.Dispatch<React.SetStateAction<string>>;
+  count: number;
 };
 
 export default function FilterBar({
@@ -16,6 +17,7 @@ export default function FilterBar({
   setSort,
   view,
   setView,
+  count,
 }: TProps) {
   return (
     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 pb-6">
@@ -28,15 +30,22 @@ export default function FilterBar({
             <button
               key={item}
               onClick={() => setFilter(item)}
-              className={`px-4 py-1.5 rounded-lg border text-sm transition
-                ${
-                  filter === item
-                    ? "bg-blue-600 text-white border-blue-600"
-                    : "bg-white text-gray-700 border-gray-300 hover:bg-gray-100"
-                }
-              `}
+              className={`relative px-4 py-1.5 rounded-lg border text-sm transition
+          ${
+            filter === item
+              ? "bg-blue-600 text-white border-blue-600"
+              : "bg-white text-gray-700 border-gray-300 hover:bg-gray-100"
+          }
+        `}
             >
               {item}
+
+              {/* This is just for the number */}
+              {filter === item && (
+                <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-semibold rounded-full h-5 w-5 flex items-center justify-center">
+                  {count}
+                </span>
+              )}
             </button>
           ))}
         </div>

@@ -49,10 +49,22 @@ export default function Footer() {
           <div className="pt-4 flex items-center gap-4">
             <p className="mb-2">Socials:</p>
             <div className="flex items-center gap-4 text-lg">
-              <FaLinkedinIn className="cursor-pointer text-blue-600 hover:text-white text-xl" />
-              <FaXTwitter className="cursor-pointer text-blue-600 hover:text-white text-xl" />
-              <FaInstagram className="cursor-pointer text-blue-600 hover:text-white text-xl" />
-              <CiFacebook className="cursor-pointer text-blue-600 hover:text-white text-2xl" />
+              <FaLinkedinIn
+                className="cursor-pointer text-blue-600 hover:text-white"
+                size={22}
+              />
+              <FaXTwitter
+                className="cursor-pointer text-blue-600 hover:text-white"
+                size={22}
+              />
+              <FaInstagram
+                className="cursor-pointer text-blue-600 hover:text-white"
+                size={22}
+              />
+              <CiFacebook
+                className="cursor-pointer text-blue-600 hover:text-white"
+                size={24}
+              />
             </div>
           </div>
         </div>

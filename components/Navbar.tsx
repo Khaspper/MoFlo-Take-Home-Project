@@ -17,13 +17,13 @@ export default function Navbar() {
       </Link>
       <div className="flex gap-2">
         <Link href={"/create"}>
-          <IoCreate className="text-4xl text-blue-700" />
+          <IoCreate className="text-blue-700" size={36} />
         </Link>
         <Link href={"/view-listings"}>
-          <FiActivity className="text-4xl text-blue-700" />
+          <FiActivity className="text-blue-700" size={36} />
         </Link>
         <Link href={"/"}>
-          <FaHome className="text-4xl" />
+          <FaHome size={36} />
         </Link>
       </div>
     </nav>

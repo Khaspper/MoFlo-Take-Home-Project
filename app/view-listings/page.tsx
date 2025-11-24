@@ -1,14 +1,16 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { fetchListings, FilterListings } from "./actions";
+import { fetchListings } from "./actions";
+import { FilterListings } from "./utils";
 import GridCard from "@/app/view-listings/components/GridCard";
 import FilterBar from "./components/FilterBar";
 import { TListing } from "./actions";
 import Table from "./components/Table";
 import { FiEdit3 } from "react-icons/fi";
 import { MdDeleteOutline } from "react-icons/md";
-import { DeleteListing } from "./actions";
+import { deleteListing } from "./actions";
+import Link from "next/link";
 
 export default function ViewListings() {
   const [listings, setListings] = useState<TListing[]>([]);
@@ -17,7 +19,7 @@ export default function ViewListings() {
   const [view, setView] = useState("Grid");
 
   async function handleDelete(id: string) {
-    const success = await DeleteListing(id);
+    const success = await deleteListing(id);
     if (!success) return;
 
     // Remove from state
@@ -58,10 +60,12 @@ export default function ViewListings() {
               baths={l.baths}
               address={l.address}
             >
-              <FiEdit3
-                className="cursor-pointer text-blue-600 transition-transform duration-200 hover:scale-110"
-                size={20}
-              />
+              <Link href={`view-listings/edit/${l.id}`}>
+                <FiEdit3
+                  className="cursor-pointer text-blue-600 transition-transform duration-200 hover:scale-110"
+                  size={20}
+                />
+              </Link>
               <MdDeleteOutline
                 className="cursor-pointer text-red-600 transition-transform duration-200 hover:scale-110"
                 size={20}
@@ -73,33 +77,45 @@ export default function ViewListings() {
           ))}
         </div>
       ) : (
-        filteredListings.map((l) => (
-          // Same thing
-          // Then I looped instead of passing the listing array because of (2)
-          <Table
-            key={l.id}
-            image_url={l.image_url}
-            created_at={l.created_at}
-            status={l.status}
-            id={l.id}
-            export_to_zillow={l.export_to_zillow}
-            export_to_mls={l.export_to_mls}
-          >
-            <FiEdit3
-              className="cursor-pointer text-blue-600 transition-transform duration-200 hover:scale-110"
-              size={20}
-            />
-            <MdDeleteOutline
-              className="cursor-pointer text-red-600 transition-transform duration-200 hover:scale-110"
-              size={20}
-              onClick={() => {
-                // (2) This
-                handleDelete(l.id);
-                // I wouldn't be able to make it this easy if I passed the listing array as is
-              }}
-            />
-          </Table>
-        ))
+        <div className="w-[80%] dark:bg-[#1A1A1A] py-3 px-4 rounded-t-lg">
+          <div className="grid grid-cols-5 text-xs font-semibold text-gray-600 dark:text-gray-300 text-center bg-gray-100 py-4 rounded-md">
+            <span>Platforms</span>
+            <span>Created Date</span>
+            <span>Status</span>
+            <span>Image</span>
+            <span>Actions</span>
+          </div>
+          {filteredListings.map((l) => (
+            // Same thing
+            // Then I looped instead of passing the listing array because of (2)
+
+            <Table
+              key={l.id}
+              image_url={l.image_url}
+              created_at={l.created_at}
+              status={l.status}
+              id={l.id}
+              export_to_zillow={l.export_to_zillow}
+              export_to_mls={l.export_to_mls}
+            >
+              <Link href={`view-listings/edit/${l.id}`}>
+                <FiEdit3
+                  className="cursor-pointer text-blue-600 transition-transform duration-200 hover:scale-110"
+                  size={20}
+                />
+              </Link>
+              <MdDeleteOutline
+                className="cursor-pointer text-red-600 transition-transform duration-200 hover:scale-110"
+                size={20}
+                onClick={() => {
+                  // (2) This
+                  handleDelete(l.id);
+                  // I wouldn't be able to make it this easy if I passed the listing array as is
+                }}
+              />
+            </Table>
+          ))}
+        </div>
       )}
     </div>
   );

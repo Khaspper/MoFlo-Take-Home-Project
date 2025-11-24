@@ -26,9 +26,9 @@ export default function GridCard({
   });
 
   const statusColor =
-    status.toLowerCase() === "draft"
+    status === "Draft"
       ? "text-yellow-500"
-      : status.toLowerCase() === "active"
+      : status === "Active"
       ? "text-green-600"
       : "text-red-600";
 

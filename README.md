@@ -23,3 +23,5 @@ Forgot to journal this part but I finished setting up Supabase kinda nervous als
 Sun Nov 23 2:43 AM Im working on the viewing stage... so like editing viewing the post seeing the information about the post... created Date... if it's posted or draft or what not... platforms as well... But I couldn't find the platform icons except for Zillow... Redfin or MLS don't have an Icon
 
 Going to take a nap but for the Filter by I decided to do All Active Draft and Sold then for Sort By I'll just do Newest and oldest and then View by I'll do Grid and table... I am stalling so hard for the create page I am so SCARED but the more I actually work on this project I realize that it'll be easier I kinda am happy that I am start Frontend first then Backend then Frontend then Backend then Frontend again... it actually makes it so easy for me at least... I like how I can see where my code is going it helps me understand it more... Anyways let's see if I can sleep it's 3:13 AM
+
+Nov 24th 1:49 AM Supabase just suddenly stopped working... dude literally nothing changed... Just started panicking -\_- edit: It came back up

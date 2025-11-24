@@ -1,4 +1,7 @@
+"use server";
+
 import { supabaseServer } from "@/lib/supabase/server";
+import { redirect } from "next/navigation";
 
 export type TListing = {
   //? Strings
@@ -34,37 +37,7 @@ export async function fetchListings() {
   return data || [];
 }
 
-export function FilterListings(
-  listings: TListing[],
-  filter: string,
-  sort: string
-) {
-  let filtered;
-  if (filter !== "All") {
-    filtered = listings.filter((l) => l.status === filter);
-  } else {
-    filtered = listings;
-  }
-  // I didn't understand how to sort by date... so I read this article
-  // https://medium.com/@danialashrafk20sw037/sorting-dates-in-javascript-89c63e143acf
-  // So thank you :P
-  const sorted = [...filtered].sort((a, b) => {
-    const dateA = new Date(a.created_at).getTime();
-    const dateB = new Date(b.created_at).getTime();
-
-    if (sort === "Newest") return dateB - dateA;
-    if (sort === "Oldest") return dateA - dateB;
-
-    //! I think we can just comment the sort === "oldest" because we only have two options???? so by default we can just return 0 (AKA no change)
-    //! Or it might be the other way around
-    //! Edit it failed it's not even working
-    //! Edit2: I fixed it and I was wrong
-    return 0;
-  });
-  return sorted;
-}
-
-export async function DeleteListing(id: string) {
+export async function deleteListing(id: string) {
   try {
     const { error } = await supabase.from("listings").delete().eq("id", id);
 
@@ -75,4 +48,55 @@ export async function DeleteListing(id: string) {
     console.error("Delete failed:", err);
     return false;
   }
+}
+
+export async function getListing(id: string) {
+  const { data } = await supabase
+    .from("listings")
+    .select("*")
+    .eq("id", id)
+    .single();
+  if (!data) throw new Error("Listing not found");
+  return data;
+}
+
+export async function updateListing(formData: FormData) {
+  const id = formData.get("id");
+  const address = formData.get("address");
+  const zip_code = formData.get("zip_code");
+  const property_type = formData.get("property_type");
+  const status = formData.get("status");
+
+  const beds = Number(formData.get("beds"));
+  const baths = Number(formData.get("baths"));
+  const sq_footage = Number(formData.get("sq_footage"));
+  const lot_size = Number(formData.get("lot_size"));
+  const year_built = Number(formData.get("year_built"));
+
+  const has_pool = formData.get("has_pool") === "on";
+  const has_hoa = formData.get("has_hoa") === "on";
+  const export_to_zillow = formData.get("export_to_zillow") === "on";
+  const export_to_mls = formData.get("export_to_mls") === "on";
+
+  const description = formData.get("description");
+  await supabase
+    .from("listings")
+    .update({
+      address,
+      zip_code,
+      property_type,
+      status,
+      beds,
+      baths,
+      sq_footage,
+      lot_size,
+      year_built,
+      has_pool,
+      has_hoa,
+      export_to_zillow,
+      export_to_mls,
+      description,
+    })
+    .eq("id", id);
+  redirect("/view-listings");
 }

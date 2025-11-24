@@ -18,7 +18,7 @@ export default function FilterBar({
   setView,
 }: TProps) {
   return (
-    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 py-6">
+    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 pb-6">
       <div className="flex flex-col">
         <span className="text-sm text-gray-500 mb-1 self-center">
           Filter Listings

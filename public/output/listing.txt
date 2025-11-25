@@ -1,0 +1,18 @@
+{
+  "address": "one more test",
+  "zip_code": "12312",
+  "property_type": "Condo",
+  "status": "Sold",
+  "beds": 1,
+  "baths": 1,
+  "sq_footage": 1,
+  "lot_size": 1,
+  "year_built": 2015,
+  "has_pool": true,
+  "has_hoa": true,
+  "export_to_zillow": true,
+  "export_to_mls": true,
+  "description": "AI GENERATED CONTENT PLACE HOLDER",
+  "created_at": "2025-11-25T04:34:29.646Z",
+  "image_url": "https://images.unsplash.com/photo-1568605114967-8130f3a36994"
+}

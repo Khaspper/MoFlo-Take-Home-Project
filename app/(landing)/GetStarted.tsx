@@ -18,7 +18,7 @@ export default async function GetStarted() {
             <p className="text-xl">Total Listings Created: {totalListings}</p>
           </div>
           <div className="mr-auto">
-            <ArrowButton text="Create a listing" link="create" />
+            <ArrowButton text="Create a listing" link="view-listings/create" />
           </div>
         </div>
 

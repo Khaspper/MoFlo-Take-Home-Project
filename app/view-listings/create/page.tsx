@@ -1,48 +1,17 @@
 "use client";
 
 import { useActionState } from "react";
-import { updateListing, type ValidationErrors } from "../../actions";
+import { createListing, type ValidationErrors } from "../actions";
 import Link from "next/link";
-import FileInput from "./FileInput";
-import SubmitWithLoading from "./SubmitWithLoading";
-import DescriptionInput from "./DescriptionInput";
+import FileInput from "../edit/components/FileInput";
+import SubmitWithLoading from "../edit/components/SubmitWithLoading";
+import DescriptionInput from "../edit/components/DescriptionInput";
 import { FaArrowLeftLong } from "react-icons/fa6";
 
-//TODO: I think the client side form validation is messing with the server side validation like it's just showing the loading screen so fix it LOL
-
-type EditFormProps = {
-  listing: {
-    id: string;
-    created_at: string;
-    address: string;
-    description: string;
-    zip_code: string;
-    property_type: string;
-    status: string;
-    beds: number;
-    baths: number;
-    sq_footage: number;
-    lot_size: number;
-    year_built: number;
-    has_pool: boolean;
-    has_hoa: boolean;
-    export_to_zillow: boolean;
-    export_to_mls: boolean;
-    image_url: string;
-  };
-};
-
-export default function EditForm({ listing }: EditFormProps) {
-  const [state, formAction] = useActionState(updateListing, null);
+export default function CreateForm() {
+  const [state, formAction] = useActionState(createListing, null);
   const errors: ValidationErrors = state?.errors || {};
   const hasErrors = !!(state?.errors && Object.keys(state.errors).length > 0);
-
-  const statusColor =
-    listing.status === "Draft"
-      ? "text-yellow-500"
-      : listing.status === "Active"
-      ? "text-green-600"
-      : "text-red-600";
 
   return (
     <div className="min-h-screen px-4 py-6 md:px-10">
@@ -54,23 +23,15 @@ export default function EditForm({ listing }: EditFormProps) {
           >
             <FaArrowLeftLong /> Back to all listings
           </Link>
+
           <h1 className="mt-2 text-2xl font-semibold tracking-tight">
-            Edit listing
+            Create new listing
           </h1>
+
           <p className="mt-1 text-xs text-gray-400">
-            Listing #{listing.id} · Created{" "}
-            {new Date(listing.created_at).toLocaleString()}
+            Fill out all required information to create a new property listing.
           </p>
         </div>
-
-        <span className="inline-flex items-center rounded-full border border-[#2D2D3A] px-3 py-1 text-xs">
-          Status:{" "}
-          <span
-            className={`ml-1 rounded-full bg-[#111827] px-2 py-0.5 text-[11px] font-medium ${statusColor}`}
-          >
-            {listing.status || "Draft"}
-          </span>
-        </span>
       </div>
 
       <div className="mx-auto max-w-5xl rounded-2xl border border-blue-500 p-5 shadow-2xl md:p-7">
@@ -96,7 +57,6 @@ export default function EditForm({ listing }: EditFormProps) {
                 </label>
                 <input
                   name="address"
-                  defaultValue={listing.address}
                   className={`w-full rounded-xl border px-3 py-2.5 text-sm outline-none transition
                     ${
                       errors.address
@@ -116,8 +76,7 @@ export default function EditForm({ listing }: EditFormProps) {
                 </label>
                 <input
                   name="zip_code"
-                  defaultValue={listing.zip_code}
-                  className={`w-full rounded-xl border px-3 py-2.5 text-sm transition outline-none
+                  className={`w-full rounded-xl border px-3 py-2.5 text-sm outline-none transition
                     ${
                       errors.zip_code
                         ? "border-red-500 focus:border-red-500"
@@ -136,14 +95,14 @@ export default function EditForm({ listing }: EditFormProps) {
                 </label>
                 <select
                   name="property_type"
-                  defaultValue={listing.property_type}
-                  className={`w-full rounded-xl border px-3 py-2.5 text-sm transition outline-none
+                  className={`w-full rounded-xl border px-3 py-2.5 text-sm outline-none transition
                     ${
                       errors.property_type
                         ? "border-red-500 focus:border-red-500"
                         : "border-[#27272F] focus:border-[#006BFF]"
                     }`}
                 >
+                  <option value="">Select type</option>
                   <option>Single Family</option>
                   <option>Condo</option>
                   <option>Town home</option>
@@ -164,16 +123,15 @@ export default function EditForm({ listing }: EditFormProps) {
                 </label>
                 <select
                   name="status"
-                  defaultValue={listing.status}
-                  className={`w-full rounded-xl border px-3 py-2.5 text-sm transition outline-none
+                  className={`w-full rounded-xl border px-3 py-2.5 text-sm outline-none transition
                     ${
                       errors.status
                         ? "border-red-500 focus:border-red-500"
                         : "border-[#27272F] focus:border-[#006BFF]"
                     }`}
                 >
-                  <option value="Active">Active</option>
                   <option value="Draft">Draft</option>
+                  <option value="Active">Active</option>
                   <option value="Sold">Sold</option>
                 </select>
                 {errors.status && (
@@ -194,8 +152,7 @@ export default function EditForm({ listing }: EditFormProps) {
                 <input
                   type="number"
                   name="beds"
-                  defaultValue={listing.beds}
-                  className={`w-full rounded-xl border px-3 py-2.5 text-sm transition outline-none
+                  className={`w-full rounded-xl border px-3 py-2.5 text-sm outline-none transition
                     ${
                       errors.beds
                         ? "border-red-500 focus:border-red-500"
@@ -215,8 +172,7 @@ export default function EditForm({ listing }: EditFormProps) {
                   type="number"
                   step="0.5"
                   name="baths"
-                  defaultValue={listing.baths}
-                  className={`w-full rounded-xl border px-3 py-2.5 text-sm transition outline-none
+                  className={`w-full rounded-xl border px-3 py-2.5 text-sm outline-none transition
                     ${
                       errors.baths
                         ? "border-red-500 focus:border-red-500"
@@ -235,7 +191,6 @@ export default function EditForm({ listing }: EditFormProps) {
                 <input
                   type="number"
                   name="sq_footage"
-                  defaultValue={listing.sq_footage}
                   className={`w-full rounded-xl border px-3 py-2.5 text-sm outline-none transition
                     ${
                       errors.sq_footage
@@ -257,7 +212,6 @@ export default function EditForm({ listing }: EditFormProps) {
                 <input
                   type="number"
                   name="lot_size"
-                  defaultValue={listing.lot_size}
                   className={`w-full rounded-xl border px-3 py-2.5 text-sm outline-none transition
                     ${
                       errors.lot_size
@@ -277,7 +231,6 @@ export default function EditForm({ listing }: EditFormProps) {
                 <input
                   type="number"
                   name="year_built"
-                  defaultValue={listing.year_built}
                   className={`w-full rounded-xl border px-3 py-2.5 text-sm outline-none transition
                     ${
                       errors.year_built
@@ -297,8 +250,7 @@ export default function EditForm({ listing }: EditFormProps) {
                   id="has_pool"
                   type="checkbox"
                   name="has_pool"
-                  defaultChecked={listing.has_pool}
-                  className="h-4 w-4 rounded border border-[#4B5563]  text-[#006BFF] focus:ring-[#006BFF]"
+                  className="h-4 w-4 rounded border border-[#4B5563] text-[#006BFF] focus:ring-[#006BFF]"
                 />
                 <label
                   htmlFor="has_pool"
@@ -313,8 +265,7 @@ export default function EditForm({ listing }: EditFormProps) {
                   id="has_hoa"
                   type="checkbox"
                   name="has_hoa"
-                  defaultChecked={listing.has_hoa}
-                  className="h-4 w-4 rounded border border-[#4B5563]  text-[#006BFF] focus:ring-[#006BFF]"
+                  className="h-4 w-4 rounded border border-[#4B5563] text-[#006BFF] focus:ring-[#006BFF]"
                 />
                 <label
                   htmlFor="has_hoa"
@@ -333,17 +284,16 @@ export default function EditForm({ listing }: EditFormProps) {
                 <input
                   type="checkbox"
                   name="export_to_zillow"
-                  defaultChecked={listing.export_to_zillow}
-                  className="h-4 w-4 rounded border border-[#4B5563]  text-[#006BFF] focus:ring-[#006BFF]"
+                  className="h-4 w-4 rounded border border-[#4B5563] text-[#006BFF] focus:ring-[#006BFF]"
                 />
                 Export to Zillow
               </label>
+
               <label className="inline-flex items-center gap-2 text-xs text-gray-500">
                 <input
                   type="checkbox"
                   name="export_to_mls"
-                  defaultChecked={listing.export_to_mls}
-                  className="h-4 w-4 rounded border border-[#4B5563]  text-[#006BFF] focus:ring-[#006BFF]"
+                  className="h-4 w-4 rounded border border-[#4B5563] text-[#006BFF] focus:ring-[#006BFF]"
                 />
                 Export to MLS
               </label>
@@ -354,7 +304,7 @@ export default function EditForm({ listing }: EditFormProps) {
             <h2 className="text-sm font-semibold">Description & media</h2>
 
             <div className="grid gap-4 md:grid-cols-2">
-              <DescriptionInput defaultValue={listing.description} />
+              <DescriptionInput defaultValue="" />
 
               {errors.description && (
                 <p className="mt-1 text-xs text-red-400 md:col-span-2">
@@ -366,7 +316,7 @@ export default function EditForm({ listing }: EditFormProps) {
                 Property image
               </label>
 
-              <FileInput name="image_url" defaultValue={listing.image_url} />
+              <FileInput name="image_url" defaultValue="" />
             </div>
           </section>
 
@@ -386,9 +336,6 @@ export default function EditForm({ listing }: EditFormProps) {
               <SubmitWithLoading hasErrors={hasErrors} />
             </div>
           </div>
-
-          {/* This is to make sure we have an existing id and when we press submit, in the backend the code finds the id and edits the correct one */}
-          <input type="hidden" name="id" value={listing.id} />
         </form>
       </div>
     </div>

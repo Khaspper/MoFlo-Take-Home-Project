@@ -16,7 +16,7 @@ export default function Navbar() {
         />
       </Link>
       <div className="flex gap-2">
-        <Link href={"/create"}>
+        <Link href={"/view-listings/create"}>
           <IoCreate className="text-blue-700" size={36} />
         </Link>
         <Link href={"/view-listings"}>

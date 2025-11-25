@@ -1,0 +1,27 @@
+1. What is the product's name (your Mo-Something app)?
+MoListings
+
+2. What is the function + connection?
+MoListings helps real estate agents quickly create, organize, and manage property listings
+The app guides agents through entering property details, setting platform export options, writing or using MoFlo's AI to create descriptions, 
+and storing the listing data in a structured format in the DB and can be viewed in the view tab ('/view-listings').
+
+Its connection to MoFlo is that it functions like other MoFlo “Mo-Something” tools:
+It takes a business task that normally requires multiple steps and puts it into one guided process.
+MoListings could plug into MoFlo Cloud as a real estate focused content module, 
+giving real estate agents a fast way to create listing information that other MoFlo apps
+(MoMail, MoSocial etc.) could later use to publish emails, posts, or updates automatically.
+
+3. Why did you choose to make the product?
+MoFlo apps take a specific business process and make it simpler, cleaner, and more automated. 
+Real estate listing creation is a perfect example of a repetitive, detail heavy task that benefits from structure and consistency.
+I wanted to create an integration that feels like it could realistically sit next to MoSocial, MoMail, and the other MoFlo tools.
+
+4. Why would MoFlo clients (small and medium-sized businesses) be interested in and/or use this product?
+Real estate SMBs spend significant time creating listings, rewriting descriptions, checking details, and prepping content for multiple platforms.
+Ideally and theoretically MoListings removes the repetition by standardizing the listing creation process,
+consistent formatting, reducing manual errors. This allows MoFlo clients to scale their workflows,
+publish faster, and integrate listing creation with their other MoFlo tools.
+
+5. What would you improve or change about the product in the future?
+I would add true media storage, real integrations with Zillow/MLS APIs, multi-user accounts and create a better preview experience before publishing.

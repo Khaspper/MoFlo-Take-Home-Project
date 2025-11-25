@@ -14,7 +14,7 @@ export default function Hero() {
         publication on any real estate platform.
       </p>
       <div className="px-4 pb-20 pt-7 md:pb-0">
-        <ArrowButton text={"Create a listing"} link={"create"} />
+        <ArrowButton text={"Create a listing"} link={"view-listings/create"} />
       </div>
     </div>
   );

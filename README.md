@@ -92,7 +92,6 @@ The JSON output will be submitted in the `public/output` folder
 
 ## File Structure Overview
 
-<!--
 /app
 ├── (landing)
 │ ├── GetStarted.tsx
@@ -104,21 +103,21 @@ The JSON output will be submitted in the `public/output` folder
 | ├── actions.ts (Server actions)
 | ├── utils.ts
 │ └── components
-│   ├── FilterBar.tsx
-│   ├── GridCard.tsx
-│   └── Table.tsx
+│ ├── FilterBar.tsx
+│ ├── GridCard.tsx
+│ └── Table.tsx
 │
 | └── create
-│   └── page.tsx (Create listing form)
+│ └── page.tsx (Create listing form)
 |
 | └── edit
 │ └── [listingId]
-│   └── page.tsx (Edit listing form)
+│ └── page.tsx (Edit listing form)
 │ └── components
-│   ├── DescriptionInput.tsx
-│   ├── EditForm.tsx
-│   ├── FileInput.tsx
-│   └── SubmitWithLoading.tsx
+│ ├── DescriptionInput.tsx
+│ ├── EditForm.tsx
+│ ├── FileInput.tsx
+│ └── SubmitWithLoading.tsx
 │ ├── actions.ts
 │ ├── page.tsx (Landing page)
 │ └── utils.ts
@@ -139,13 +138,12 @@ The JSON output will be submitted in the `public/output` folder
 
 /public
 ├── img
-│  └── house.png
-│  └── moflo-logo.png
-│  └── moflo.png
-│  └── new-listing-image.png
+│ └── house.png
+│ └── moflo-logo.png
+│ └── moflo.png
+│ └── new-listing-image.png
 ├── output
 └── readme_img
--->
 
 ## Running the Project Locally
 

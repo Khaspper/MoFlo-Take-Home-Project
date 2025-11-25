@@ -165,10 +165,7 @@ Create a .env.local file in the root of the project and add:
 `NEXT_PUBLIC_SUPABASE_ANON_KEY=KEY`
 
 ### **4. Run development server**
-
-`npm run dev`
-or
-`npm run build` and `npm run start`
+`npm run build` and `npm run start` or `npm run dev`
 
 The app will be available at: http://localhost:3000
 
